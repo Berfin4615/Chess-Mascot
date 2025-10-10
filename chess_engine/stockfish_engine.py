@@ -13,11 +13,12 @@ def analyze_game(pgn_path):
     analysis = []
 
     for move in game.mainline_moves():
+        move_san = board.san(move)
         board.push(move)
         stockfish.set_fen_position(board.fen())
         eval_data = stockfish.get_evaluation()
         analysis.append({
-            "move": board.san(move),
+            "move": move_san,
             "eval": eval_data,
             "comment": get_comment(eval_data)
         })
