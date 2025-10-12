@@ -1,12 +1,11 @@
-import requests
-import time
+# main.py
+import requests, time
 from chess_engine.pgn_utils import save_latest_game
 from chess_engine.stockfish_engine import analyze_game_detailed
 from ui.terminal_ui import show_analysis
 
 username = "berfin4615"
 headers = {"User-Agent": "Mozilla/5.0"}
-
 last_game_count = 0
 
 def get_latest_archive_url():
@@ -29,8 +28,12 @@ while True:
             print(f"\n✅ Yeni oyun bulundu! ({current_count})\n")
             last_game = games[-1]
             save_latest_game(last_game["pgn"])
-            analysis = analyze_game_detailed("games/latest_game.pgn")
-            show_analysis(analysis)
+
+            detailed = analyze_game_detailed("games/latest_game.pgn")
+            moves = detailed.get("moves", [])
+            print("\n📊 Oyun Analizi:\n")
+            show_analysis(moves)   # <-- SADECE LISTEYI GÖNDER
+
             last_game_count = current_count
         else:
             print(f"⏳ Henüz yeni oyun yok. ({current_count})")
@@ -38,5 +41,5 @@ while True:
         time.sleep(60)
 
     except Exception as e:
-        print("❌ Hata:", e)
+        print(f"❌ Hata: {e}")
         time.sleep(60)

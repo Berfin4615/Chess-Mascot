@@ -1,6 +1,8 @@
 def show_analysis(analysis):
-    print("📊 Oyun Analizi:\n")
+    if not isinstance(analysis, list):
+        print("⚠️ show_analysis bir liste bekler, dict verdin. 'moves' listesini geçir.")
+        return
     for i, move_data in enumerate(analysis, start=1):
-        eval_type = move_data["eval"]["type"]
-        val = move_data["eval"]["value"]
-        print(f"{i}. {move_data['move']} — [{eval_type}:{val}] → {move_data['comment']}")
+        et = move_data["eval"]["type"]
+        ev = move_data["eval"]["value"]
+        print(f"{i}. {move_data['san']} — [{et}:{ev}] → {move_data['comment']}")
