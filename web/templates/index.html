@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chess Mascot</title>
+
+  <!-- Chessboard & Chess.js (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.css" integrity="sha512-M45y3g0JcO5A8g7qkZbVYcC2nEJ2m7jJ2iTldH9v3bFLzq7CCQn0zZ5b3jUj7XkQ2uQw8y4aXw0K9yXg4EQZxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js" integrity="sha512-Vm6lJqQxZkKHj0X7S5WzvQK/1+4mFQnZNyq1a2GqGzvQyJ1A3m7J6zP2kGgbr0A6lq8X9k9n7FQ4W7c7tYz3wA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-dnV4Kx6w3y7e9Z1m5c+sQ3DP8mbv2rC3F+S6z4hQhQ6uHk+VuzmX9kqY0o0T2a8sQ8G0p5h0D5XrW2cWJj7H2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="board-col">
+      <div id="board" class="board"></div>
+      <div class="controls">
+        <button id="btn-start">⏮ Baş</button>
+        <button id="btn-prev">◀ Geri</button>
+        <button id="btn-play">▶ Oynat</button>
+        <button id="btn-next">İleri ▶</button>
+        <button id="btn-end">⏭ Son</button>
+        <label class="speed">
+          Hız
+          <input id="speed" type="range" min="200" max="1500" value="800" />
+        </label>
+      </div>
+      <div id="moves" class="moves"></div>
+    </div>
+
+    <div class="mascot-col">
+      <div class="mascot">
+        <img src="/static/img/mascot.png" alt="Mascot" />
+        <div class="bubble">
+          <div id="bubble-text">Yükleniyor...</div>
+        </div>
+      </div>
+      <div class="evalbox">
+        <div>Eval: <span id="eval-val">-</span></div>
+        <div>Tip: <span id="eval-type">-</span></div>
+        <div>Hamle #<span id="ply">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -3,24 +3,27 @@ import chess.pgn
 from stockfish import Stockfish
 from mascot.mascot import get_comment
 
-stockfish = Stockfish(path="/usr/games/stockfish") 
+engine = Stockfish(path="/usr/games/stockfish") 
 
-def analyze_game(pgn_path):
+def analyze_game_detailed(pgn_path: str):
     with open(pgn_path) as f:
         game = chess.pgn.read_game(f)
 
     board = game.board()
-    analysis = []
+    timeline = []  # [{san, fen_after, eval:{type,value}, comment}, ...]
 
     for move in game.mainline_moves():
-        move_san = board.san(move)
-        board.push(move)
-        stockfish.set_fen_position(board.fen())
-        eval_data = stockfish.get_evaluation()
-        analysis.append({
-            "move": move_san,
-            "eval": eval_data,
-            "comment": get_comment(eval_data)
+        san = board.san(move)        # önce SAN
+        board.push(move)             # sonra uygula
+        engine.set_fen_position(board.fen())
+        ev = engine.get_evaluation()
+        timeline.append({
+            "san": san,
+            "fen_after": board.fen(),
+            "eval": ev,
+            "comment": get_comment(ev)
         })
-
-    return analysis
+    return {
+        "initial_fen": chess.STARTING_FEN,
+        "moves": timeline
+    }

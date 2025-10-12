@@ -1,7 +1,7 @@
 import requests
 import time
 from chess_engine.pgn_utils import save_latest_game
-from chess_engine.stockfish_engine import analyze_game
+from chess_engine.stockfish_engine import analyze_game_detailed
 from ui.terminal_ui import show_analysis
 
 username = "berfin4615"
@@ -29,7 +29,7 @@ while True:
             print(f"\n✅ Yeni oyun bulundu! ({current_count})\n")
             last_game = games[-1]
             save_latest_game(last_game["pgn"])
-            analysis = analyze_game("games/latest_game.pgn")
+            analysis = analyze_game_detailed("games/latest_game.pgn")
             show_analysis(analysis)
             last_game_count = current_count
         else:
