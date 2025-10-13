@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chess Mascot</title>
 
-  <!-- Chessboard & Chess.js (CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.css" integrity="sha512-M45y3g0JcO5A8g7qkZbVYcC2nEJ2m7jJ2iTldH9v3bFLzq7CCQn0zZ5b3jUj7XkQ2uQw8y4aXw0K9yXg4EQZxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js" integrity="sha512-Vm6lJqQxZkKHj0X7S5WzvQK/1+4mFQnZNyq1a2GqGzvQyJ1A3m7J6zP2kGgbr0A6lq8X9k9n7FQ4W7c7tYz3wA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-dnV4Kx6w3y7e9Z1m5c+sQ3DP8mbv2rC3F+S6z4hQhQ6uHk+VuzmX9kqY0o0T2a8sQ8G0p5h0D5XrW2cWJj7H2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- 1️⃣ chess.js (oyun motoru) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js" integrity="sha512-xRllwz2gdZciIB+AkEbeq+gVhX8VB8XsfqeFbUh+SzHlN96dEduwtTuVuc2u9EROlmW9+yhRlxjif66ORpsgVA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <!-- 2️⃣ chessboard.js (tahta UI) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+          integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+          crossorigin="anonymous"></script>
+
+  <!-- 3️⃣ stil dosyan -->
   <link rel="stylesheet" href="/static/css/styles.css" />
 </head>
 <body>
@@ -45,6 +53,7 @@
     </div>
   </div>
 
+  <!-- 4️⃣ app.js (en sonda olmalı!) -->
   <script src="/static/js/app.js"></script>
 </body>
 </html>

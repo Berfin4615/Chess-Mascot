@@ -2,9 +2,9 @@ from flask import Flask, render_template, jsonify
 from pathlib import Path
 import sys, os
 
-# Proje kökünü import yoluna ekle
+# 🔧 Proje kök dizinini bul ve sys.path'e ekle
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.append(str(ROOT))
+sys.path.append(str(ROOT))  # ✅ ekledik
 
 from chess_engine.stockfish_engine import analyze_game_detailed
 
@@ -19,8 +19,12 @@ def api_analysis():
     pgn_path = ROOT / "games" / "latest_game.pgn"
     if not pgn_path.exists():
         return jsonify({"error": "latest_game.pgn bulunamadı. Önce bir oyun oyna/çek."}), 404
-    data = analyze_game_detailed(str(pgn_path))
-    return jsonify(data)
+    try:
+        data = analyze_game_detailed(str(pgn_path))
+        return jsonify(data)
+    except Exception as e:
+        print("🔥 API hata:", e)
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=False, port=5001)
