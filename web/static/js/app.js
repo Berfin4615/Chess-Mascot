@@ -21,7 +21,7 @@ async function loadAnalysis() {
   console.log("✅ Veri başarıyla alındı:", data);
 
   chess = new Chess(data.initial_fen);
-  board = Chessboard('board', { position: data.initial_fen, draggable: false });
+  board = Chessboard('board', { position: data.initial_fen, draggable: false, pieceTheme: '/static/img/chesspieces/wikipedia/{piece}.png' });
 
   const mvBox = document.getElementById("moves");
   mvBox.innerHTML = "";
