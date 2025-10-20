@@ -1,5 +1,15 @@
 let board, chess, data, idx = -1, timer = null;
 
+document.addEventListener("DOMContentLoaded", () => {
+  lottie.loadAnimation({
+    container: document.getElementById('mascot-animation'), 
+    renderer: 'svg',  
+    loop: true,       
+    autoplay: true,   
+    path: '/static/animations/mascot.json' 
+  });
+});
+
 async function loadAnalysis() {
   try {
     const res = await fetch("/api/analysis");
@@ -45,7 +55,7 @@ function updateUI() {
   const plyEl = document.getElementById("ply");
 
   if (idx < 0) {
-    bubble.textContent = "Hazırım! ▶ Oynat'a bas, hamle hamle anlatayım ✨";
+    bubble.textContent = "Hazırım! Oynat'a bas, hamle hamle anlatayım ✨";
     evalVal.textContent = "-"; evalType.textContent = "-"; plyEl.textContent = "0";
     highlightMove(null);
     return;
