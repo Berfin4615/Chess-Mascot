@@ -98,7 +98,7 @@ function play() {
     return;
   }
   const speed = +document.getElementById("speed").value;
-  document.getElementById("btn-play").textContent = "⏸ Durdur";
+  document.getElementById("btn-play").textContent = "▐▐ Durdur";
   timer = setInterval(() => {
     if (idx >= data.moves.length - 1) {
       play();
